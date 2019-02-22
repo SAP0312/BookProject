@@ -4,13 +4,14 @@ import com.bookCRUD.entities.Book;
 import com.bookCRUD.repositories.BookCRUDrepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BookCRUDserviceImpl implements BookCRUDservice {
     @Autowired
-    @Qualifier("First")
     private BookCRUDrepository bookRepository;
 
     @Override
