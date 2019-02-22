@@ -1,14 +1,17 @@
 package com.bookCRUD.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Book")
 public class Book {
 
+
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "book_generator")
+    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", initialValue = 1,allocationSize = 10)
+    @Column(name = "id", updatable = false, nullable = false)
     private int id;
     private String title;
     private String author;

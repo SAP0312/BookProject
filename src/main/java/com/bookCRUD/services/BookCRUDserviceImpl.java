@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +40,10 @@ public class BookCRUDserviceImpl implements BookCRUDservice {
         List<Book> books=new ArrayList<>();
         bookRepository.findAll().forEach(books::add);
         return books;
+    }
+
+    public boolean ifExist(Integer bookId){
+
+        return bookRepository.exists(bookId);
     }
 }

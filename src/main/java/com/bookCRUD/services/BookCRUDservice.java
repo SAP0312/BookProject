@@ -16,4 +16,6 @@ public interface BookCRUDservice {
     public void deleteBook(Integer bookId);
 
     public List<Book> getAllBooks();
+
+    public boolean ifExist(Integer bookId);
 }
