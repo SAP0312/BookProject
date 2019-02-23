@@ -10,7 +10,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "book_generator")
-    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", initialValue = 1,allocationSize = 10)
+    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", allocationSize = 10)
     @Column(name = "id", updatable = false, nullable = false)
     private int id;
     private String title;
@@ -65,5 +65,14 @@ public class Book {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString(){
+        return "Title: "+this.getTitle()+" Author: "+ this.getAuthor()
+                +" Category: "+this.getCategory()
+                +" Publisher: "+this.getPublisher()
+                +" Language: "+ this.getLanguage();
+
     }
 }
