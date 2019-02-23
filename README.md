@@ -44,10 +44,10 @@ update books and also provide an option to upload CSV files containing books.
                  "category": "Indian Politics"
         	}
 
-## For deleting a books
+## For deleting a book
          PUT
-            API End point: /book/{book id}
-        	http://localhost:8080/book/20
+            API End point: /books/{book id}
+        	http://localhost:8080/books/20
 
 ## For getting all books
          GET
