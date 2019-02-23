@@ -2,7 +2,11 @@
 This project is to create REST API's for a book management where we can add,read,delete and
 update books and also provide an option to upload CSV files containing books.
 
-## For adding a book
+## Prerequisites
+JAVA SDK 1.8
+Postgres SQL(You can add your own DB but then you'll have to change the DB connection settings in application.properties
+
+### For adding a book
      POST
      	API End point: /books
      	http://localhost:8080/books
@@ -16,7 +20,7 @@ update books and also provide an option to upload CSV files containing books.
               "category": "Politics"
      	}
 
-## For getting a book by ID
+### For getting a book by ID
          GET
             API End point: books/{book id}
         	http://localhost:8080/books/20
@@ -30,7 +34,7 @@ update books and also provide an option to upload CSV files containing books.
                  "category": "Politics"
         	}
 
-## For updating a book
+### For updating a book
          PUT
             API End point: /books/{book id}
         	http://localhost:8080/books/20
@@ -44,21 +48,34 @@ update books and also provide an option to upload CSV files containing books.
                  "category": "Indian Politics"
         	}
 
-## For deleting a book
+### For deleting a book
          PUT
             API End point: /books/{book id}
         	http://localhost:8080/books/20
 
-## For getting all books
+### For getting all books
          GET
-            API End point: books/
-        	http://localhost:8080/books/20
+            API End point: books
+        	http://localhost:8080/books
         	Response body
-        	{
+        	[{
         		 "id": 20,
                  "title": "Feast of vultures",
                  "author": "Joey Joseph",
                  "publisher": "Penguin",
                  "language": "English",
                  "category": "Politics"
-        	}
+        	},
+        	 {
+                    "id": 123,
+                    "title": "God Created the Integers",
+                    "author": "Hawking Stephen",
+                    "publisher": "Penguin",
+                    "language": null,
+                    "category": "mathematics"
+                },
+                ]
+### For uploading CSV file
+        POST
+            API End Point : books/uploadFile
+            http://localhost:8080/books/uploadFile
