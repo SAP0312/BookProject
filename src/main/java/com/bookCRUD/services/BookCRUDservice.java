@@ -1,6 +1,8 @@
 package com.bookCRUD.services;
 
 import com.bookCRUD.entities.Book;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 // This is the interface for Book manaegement CRUD service
@@ -17,4 +19,6 @@ public interface BookCRUDservice {
     public List<Book> getAllBooks();
 
     public boolean ifExist(Integer bookId);
+
+    public String uploadFile(MultipartFile file);
 }
