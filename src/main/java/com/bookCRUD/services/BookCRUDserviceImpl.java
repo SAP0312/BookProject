@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Qualifier("bookCRUDService")
 public class BookCRUDserviceImpl implements BookCRUDservice {
     @Autowired
     private BookCRUDrepository bookRepository;

@@ -7,19 +7,22 @@ import com.utilities.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+// This is the rest controller for book management
 @RestController
 public class BookCRUDcontroller {
 
+    // Logger for logging
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private BookCRUDserviceImpl bookService;
+    @Qualifier("bookCRUDService")  //Qualifier can be changed if we want to change our implementation
+    private BookCRUDservice bookService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/books")
     @ResponseStatus(HttpStatus.CREATED)

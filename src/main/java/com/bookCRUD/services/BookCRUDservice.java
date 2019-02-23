@@ -1,10 +1,9 @@
 package com.bookCRUD.services;
 
 import com.bookCRUD.entities.Book;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
+// This is the interface for Book manaegement CRUD service
 public interface BookCRUDservice {
 
     public void addBook(Book book);
