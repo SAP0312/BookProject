@@ -9,7 +9,7 @@ public interface BookCRUDservice {
 
     public void addBook(Book book);
 
-    public Book getBook(Integer bookId);
+    public Book getBookbyId(Integer bookId);
 
     public Book updateBook(Integer BookId,Book book);
 

@@ -16,33 +16,34 @@ public class BookCRUDserviceImpl implements BookCRUDservice {
     private BookCRUDrepository bookRepository;
 
     @Override
-    public void addBook(Book book){
+    public void addBook(Book book) {
         bookRepository.save(book);
     }
 
     @Override
-    public Book getBook(Integer bookId){
+    public Book getBookbyId(Integer bookId) {
         return bookRepository.findOne(bookId);
     }
 
     @Override
-    public Book updateBook(Integer BookId,Book book){
+    public Book updateBook(Integer BookId, Book book) {
         return bookRepository.save(book);
     }
 
     @Override
-    public void deleteBook(Integer bookId){
+    public void deleteBook(Integer bookId) {
         bookRepository.delete(bookId);
     }
 
     @Override
-    public List<Book> getAllBooks(){
-        List<Book> books=new ArrayList<>();
+    public List<Book> getAllBooks() {
+        List<Book> books = new ArrayList<>();
         bookRepository.findAll().forEach(books::add);
         return books;
     }
 
-    public boolean ifExist(Integer bookId){
+    @Override
+    public boolean ifExist(Integer bookId) {
 
         return bookRepository.exists(bookId);
     }
