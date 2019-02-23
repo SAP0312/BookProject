@@ -34,30 +34,29 @@ public class BookCRUDcontroller {
         return bookService.getAllBooks();
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/books")
-
-    public Book updateBook(@RequestBody Book book) {
-        if (!bookService.ifExist(book.getId())) {
-            LOGGER.error("Book not found with id "+ book.getId());
-            throw new ResourceNotFoundException("Book not found with id " + book.getId());
+    @RequestMapping(method = RequestMethod.PUT, value = "/books/{bookID}")
+    public Book updateBook(@RequestBody Book book,@PathVariable(value = "bookID") Integer bookID) {
+        if (!bookService.ifExist(bookID)) {
+            LOGGER.error("Book not found with id "+bookID);
+            throw new ResourceNotFoundException("Book not found with id " + bookID);
 
         }
 
-        return bookService.updateBook(book.getId(), book);
+        return bookService.updateBook(bookID, book);
     }
 
-    @RequestMapping("/books/{id}")
-    public Book getBookbyId(@PathVariable(value = "id") Integer id) {
-        return bookService.getBookbyId(id);
+    @RequestMapping("/books/{bookID}")
+    public Book getBookbyId(@PathVariable(value = "bookID") Integer bookID) {
+        return bookService.getBookbyId(bookID);
     }
-    @RequestMapping( method = RequestMethod.DELETE,value="/books/{id}")
+    @RequestMapping( method = RequestMethod.DELETE,value="/books/{bookID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBook(@PathVariable(value = "id")Integer id){
+    public void deleteBook(@PathVariable(value = "bookID")Integer bookID){
 
-        if (!bookService.ifExist(id))
-            throw new ResourceNotFoundException("Book not found with id " + id);
+        if (!bookService.ifExist(bookID))
+            throw new ResourceNotFoundException("Book not found with id " + bookID);
 
-        bookService.deleteBook(id);
+        bookService.deleteBook(bookID);
     }
 
 }
