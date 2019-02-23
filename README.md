@@ -3,8 +3,9 @@ This project is to create REST API's for a book management where we can add,read
 update books and also provide an option to upload CSV files containing books.
 
 ## Prerequisites
-JAVA SDK 1.8
-Postgres SQL(You can add your own DB but then you'll have to change the DB connection settings in application.properties
+-JAVA SDK 1.8
+-Postgres SQL(You can add your own DB but then you'll have to change the DB connection settings in application.properties)
+- Intellij
 
 ### For adding a book
      POST
