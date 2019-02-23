@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface BookCRUDrepository extends CrudRepository<Book,Integer> {
+public interface BookRepository extends CrudRepository<Book,Integer> {
 }

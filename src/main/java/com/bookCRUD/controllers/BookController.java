@@ -1,8 +1,7 @@
 package com.bookCRUD.controllers;
 
 import com.bookCRUD.entities.Book;
-import com.bookCRUD.services.BookCRUDservice;
-import com.bookCRUD.services.BookCRUDserviceImpl;
+import com.bookCRUD.services.BookService;
 import com.utilities.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,14 +19,14 @@ import java.util.List;
 
 // This is the rest controller for book management
 @RestController
-public class BookCRUDcontroller {
+public class BookController {
 
     // Logger for logging
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     @Qualifier("bookCRUDService")  //Qualifier can be changed if we want to change our implementation
-    private BookCRUDservice bookService;
+    private BookService bookService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/books")
     @ResponseStatus(HttpStatus.CREATED)

@@ -2,7 +2,7 @@ package com.bookCRUD.services;
 
 
 import com.bookCRUD.entities.Book;
-import com.bookCRUD.repositories.BookCRUDrepository;
+import com.bookCRUD.repositories.BookRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,13 +19,13 @@ import java.util.List;
 
 @Service
 @Qualifier("bookCRUDService")
-public class BookCRUDserviceImpl implements BookCRUDservice {
+public class BookServiceImpl implements BookService {
 
     // Logger for logging
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private BookCRUDrepository bookRepository;
+    private BookRepository bookRepository;
 
     @Override
     public void addBook(Book book) {
