@@ -32,18 +32,20 @@ public class BookController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addBook(@RequestBody Book book) {
         bookService.addBook(book);
-        LOGGER.info("New book added :"+book.toString());
+        LOGGER.info("New book added :" + book.toString());
     }
 
     @RequestMapping("/books")
     public List<Book> getAllBooks() {
+
         return bookService.getAllBooks();
     }
 
+
     @RequestMapping(method = RequestMethod.PUT, value = "/books/{bookID}")
-    public Book updateBook(@RequestBody Book book,@PathVariable(value = "bookID") Integer bookID) {
+    public Book updateBook(@RequestBody Book book, @PathVariable(value = "bookID") Integer bookID) {
         if (!bookService.ifExist(bookID)) {
-            LOGGER.error("Book not found with id "+bookID);
+            LOGGER.error("Book not found with id " + bookID);
             throw new ResourceNotFoundException("Book not found with id " + bookID);
         }
 
@@ -52,20 +54,21 @@ public class BookController {
 
     @RequestMapping("/books/{bookID}")
     public Book getBookbyId(@PathVariable(value = "bookID") Integer bookID) {
+
         return bookService.getBookbyId(bookID);
     }
 
-    @RequestMapping( method = RequestMethod.DELETE,value="/books/{bookID}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/books/{bookID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBook(@PathVariable(value = "bookID")Integer bookID){
+    public void deleteBook(@PathVariable(value = "bookID") Integer bookID) {
 
         if (!bookService.ifExist(bookID))
             throw new ResourceNotFoundException("Book not found with id " + bookID);
         bookService.deleteBook(bookID);
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "books/uploadFile")
-    public String fileUpload(@RequestParam("file") MultipartFile file){
+    @RequestMapping(method = RequestMethod.POST, value = "books/uploadFile")
+    public String fileUpload(@RequestParam("file") MultipartFile file) {
         try {
             byte[] bytes = file.getBytes();
             ByteArrayInputStream inputFilestream = new ByteArrayInputStream(bytes);
@@ -74,7 +77,7 @@ public class BookController {
             int i = 0;
             Book book;
             while ((line = br.readLine()) != null) {
-                book=new Book();
+                book = new Book();
                 LOGGER.info(line);
                 String[] bookDetails = line.split(",");
                 book.setTitle(bookDetails[0]);
