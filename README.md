@@ -86,3 +86,4 @@ update books and also provide an option to upload CSV files containing books.
         POST
             API End Point : books/uploadFile
             http://localhost:8090/books/uploadFile
+        You can download sample file from sample folder.

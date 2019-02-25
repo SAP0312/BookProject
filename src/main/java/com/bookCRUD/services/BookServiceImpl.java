@@ -55,6 +55,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void saveAll(List<Book> list){
+        bookRepository.save(list);
+    }
+
+    @Override
     public boolean ifExist(Integer bookId) {
 
         return bookRepository.exists(bookId);

@@ -11,10 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 // This is the rest controller for book management
@@ -70,12 +68,13 @@ public class BookController {
     @RequestMapping(method = RequestMethod.POST, value = "books/uploadFile")
     public String fileUpload(@RequestParam("file") MultipartFile file) {
         try {
-            byte[] bytes = file.getBytes();
-            ByteArrayInputStream inputFilestream = new ByteArrayInputStream(bytes);
+//            byte[] bytes = file.getBytes();
+           InputStream inputFilestream = file.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(inputFilestream));
             String line = "";
             int i = 0;
             Book book;
+            List<Book> listBooks = new ArrayList<Book>();
             while ((line = br.readLine()) != null) {
                 book = new Book();
                 LOGGER.info(line);
@@ -85,8 +84,10 @@ public class BookController {
                 book.setCategory(bookDetails[2]);
                 book.setPublisher(bookDetails[3]);
                 book.setLanguage(bookDetails[4]);
-                bookService.addBook(book);
+//                bookService.addBook(book);
+                listBooks.add(book);
             }
+            bookService.saveAll(listBooks);
         } catch (IOException e) {
             e.printStackTrace();
         }

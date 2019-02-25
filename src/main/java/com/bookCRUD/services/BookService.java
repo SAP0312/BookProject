@@ -21,4 +21,6 @@ public interface BookService {
     public boolean ifExist(Integer bookId);
 
     public String uploadFile(MultipartFile file);
+
+    public void saveAll(List<Book> list);
 }
