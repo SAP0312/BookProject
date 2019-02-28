@@ -86,36 +86,7 @@ public class BookController {
             throw new ResourceNotFoundException("Book not found with id " + bookID);
         bookService.deleteBook(bookID);
     }
-
-//    @RequestMapping(method = RequestMethod.POST, value = "books/uploadFile")
-//    public String fileUpload(@RequestParam("file") MultipartFile file) {
-////        try {
-//////            byte[] bytes = file.getBytes();
-////           InputStream inputFilestream = file.getInputStream();
-////            BufferedReader br = new BufferedReader(new InputStreamReader(inputFilestream));
-////            String line = "";
-////            int i = 0;
-////            Book book;
-////            List<Book> listBooks = new ArrayList<Book>();
-////            while ((line = br.readLine()) != null) {
-////                book = new Book();
-////                LOGGER.info(line);
-////                String[] bookDetails = line.split(",");
-////                book.setTitle(bookDetails[0]);
-////                book.setAuthor(bookDetails[1]);
-////                book.setCategory(bookDetails[2]);
-////                book.setPublisher(bookDetails[3]);
-////                book.setLanguage(bookDetails[4]);
-//////                bookService.addBook(book);
-////                listBooks.add(book);
-////            }
-////            bookService.saveAll(listBooks);
-////        } catch (IOException e) {
-////            e.printStackTrace();
-////        }
-//        return "Uploaded Succesfully";
-//    }
-
+    
     @RequestMapping(method = RequestMethod.POST, value = "books/uploadFile")
     public String FileUpload(@RequestParam("file") MultipartFile file) {
     return uploadService.fileUpload(file);
@@ -135,7 +106,7 @@ public class BookController {
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                 String line = "";
                 while ((line = br.readLine()) != null) {
-                    LOGGER.info(line);
+//                    LOGGER.info(line);
             }
         }
 
