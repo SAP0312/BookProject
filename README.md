@@ -65,7 +65,8 @@ update books and also provide an option to upload CSV files containing books.
             API End point: books
         	http://localhost:8090/books
         	Response body
-        	[{
+        	[
+        	{
         		 "id": 20,
                  "title": "Feast of vultures",
                  "author": "Joey Joseph",
@@ -80,7 +81,7 @@ update books and also provide an option to upload CSV files containing books.
                     "publisher": "Penguin",
                     "language": null,
                     "category": "mathematics"
-                },
+                }
                 ]
 ### For uploading CSV file
         POST

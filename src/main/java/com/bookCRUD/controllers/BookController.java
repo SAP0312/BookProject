@@ -57,7 +57,6 @@ public class BookController {
 
     @RequestMapping("/books")
     public List<Book> getAllBooks() {
-
         return bookService.getAllBooks();
     }
 
@@ -68,7 +67,6 @@ public class BookController {
             LOGGER.error("Book not found with id " + bookID);
             throw new ResourceNotFoundException("Book not found with id " + bookID);
         }
-
         return bookService.updateBook(bookID, book);
     }
 
@@ -86,7 +84,7 @@ public class BookController {
             throw new ResourceNotFoundException("Book not found with id " + bookID);
         bookService.deleteBook(bookID);
     }
-    
+
     @RequestMapping(method = RequestMethod.POST, value = "books/uploadFile")
     public String FileUpload(@RequestParam("file") MultipartFile file) {
     return uploadService.fileUpload(file);
