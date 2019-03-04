@@ -9,25 +9,18 @@ import org.apache.tomcat.util.http.fileupload.FileItemIterator;
 import org.apache.tomcat.util.http.fileupload.FileItemStream;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.exception.JDBCConnectionException;
-import org.hibernate.jdbc.Work;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityManager;
-import java.io.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 // This is the rest controller for book management
@@ -44,8 +37,6 @@ public class BookController {
     @Autowired
     @Qualifier("uploadService")
     private UploadService uploadService;
-
-
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/books")
@@ -87,8 +78,8 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.POST, value = "books/uploadFile")
     public String FileUpload(@RequestParam("file") MultipartFile file) {
-    return uploadService.fileUpload(file);
-}
+        return uploadService.fileUpload(file);
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "books/upload")
     public String fileUpload(@RequestParam("file") HttpServletRequest request) throws IOException, FileUploadException {
@@ -105,10 +96,10 @@ public class BookController {
                 String line = "";
                 while ((line = br.readLine()) != null) {
 //                    LOGGER.info(line);
+                }
             }
-        }
 
-    }
+        }
         return "Uploaded Succesfully";
     }
 }

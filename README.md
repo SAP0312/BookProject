@@ -12,6 +12,7 @@ update books and also provide an option to upload CSV files containing books.
 - Open the project in IntelliJ
 - Go to src/java/com.bookCRUD.BookAPIApp and right-click and select "Run BookAPIApp.main()" in IntelliJ
 - Navigate to your web browser to http://localhost:8090 (You can change the port number in application.properties)
+- To access the Actuator endpoints go to http://localhost:8090/manage/{endpoint}.
 
 ### For adding a book
      POST
@@ -88,3 +89,4 @@ update books and also provide an option to upload CSV files containing books.
             API End Point : books/uploadFile
             http://localhost:8090/books/uploadFile
         You can download sample file from sample folder.
+
