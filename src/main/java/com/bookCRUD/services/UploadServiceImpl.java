@@ -3,19 +3,15 @@ package com.bookCRUD.services;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.JDBCConnectionException;
-import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.EntityManager;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -30,12 +26,10 @@ public class UploadServiceImpl implements UploadService {
         Session session = entityManager.unwrap(Session.class);
         Transaction tx = session.beginTransaction();
         //get Connection from Session
-        session.doWork(new Work() {
-            @Override
-            public void execute(Connection conn) throws SQLException {
+        session.doWork((conn)-> {
                 PreparedStatement pstmt = null;
                 try{
-                    String sqlInsert = "insert into book (author,category,language,publisher,title) values (?,?,?,?,?) ";
+                    String sqlInsert = "insert into book (author,category,language,publisher,title) values (?,?,?,?,?)";
                     pstmt = conn.prepareStatement(sqlInsert );
                     int i=1;
                     InputStream inputFilestream = file.getInputStream();
@@ -73,7 +67,7 @@ public class UploadServiceImpl implements UploadService {
                     pstmt.close();
                 }
             }
-        });
+        );
 
         tx.commit();
         session.close();
