@@ -4,6 +4,7 @@ import com.bookCRUD.entities.Book;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 // This is the interface for Book manaegement CRUD service
 public interface BookService {

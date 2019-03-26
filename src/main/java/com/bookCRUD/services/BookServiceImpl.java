@@ -3,6 +3,8 @@ package com.bookCRUD.services;
 
 import com.bookCRUD.entities.Book;
 import com.bookCRUD.repositories.BookRepository;
+import com.utilities.ResourceNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Qualifier("bookCRUDService")
@@ -29,7 +32,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookbyId(Integer bookId) {
-        return bookRepository.findOne(bookId);
+       Optional<Book> bookOptional= bookRepository.findById(bookId);
+       if(bookOptional.isPresent())
+       return bookOptional.get();
+       else {
+    	   throw new ResourceNotFoundException("Book not found with id " + bookId);
+	}
     }
 
     @Override
@@ -39,7 +47,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void deleteBook(Integer bookId) {
-        bookRepository.delete(bookId);
+        bookRepository.deleteById(bookId);
     }
 
     @Override
@@ -51,12 +59,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void saveAll(List<Book> list){
-        bookRepository.save(list);
+        bookRepository.saveAll(list);
     }
 
     @Override
     public boolean ifExist(Integer bookId) {
-        return bookRepository.exists(bookId);
+        return bookRepository.existsById(bookId);
     }
 
 

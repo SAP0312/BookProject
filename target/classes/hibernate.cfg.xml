@@ -30,9 +30,9 @@
             true
         </property>
 
-        <property name = "hbm2ddl.auto">
+      <!--    <property name = "hbm2ddl.auto">
             update
-        </property>
+        </property>-->
         <property name="hibernate.default_schema">
             bookService
         </property>

@@ -18,8 +18,26 @@ public class Book {
     private String publisher;
     private String language;
     private String category;
+    
+    public Book() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    
 
-    public int getId() {
+    public Book(int id, String title, String author, String publisher, String language, String category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		this.language = language;
+		this.category = category;
+	}
+
+
+
+	public int getId() {
         return id;
     }
 
